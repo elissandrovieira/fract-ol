@@ -6,7 +6,7 @@
 /*   By: eteofilo <eteofilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:28:41 by eteofilo          #+#    #+#             */
-/*   Updated: 2025/02/07 10:59:56 by eteofilo         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:27:47 by eteofilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	mandelbrot(int pixel_x, int pixel_y, t_data *data)
 
 	z.real = 0;
 	z.img = 0;
-	c.real = data->p_x + pixel_x * ((4 + data->zoom) / (WIDTH + (data->zoom * -1)));
-	c.img = data->p_y - pixel_y * ((4 + data->zoom) / (HEIGHT + (data->zoom * -1)));
+	c.real = data->position_x + pixel_x * data->zoom;
+	c.img = data->position_y - pixel_y * data->zoom;
 	i = 0;
 	while (((z.img * z.img) + (z.real * z.real) <= 4 * 4) && i < 100)
 	{
@@ -34,7 +34,7 @@ void	mandelbrot(int pixel_x, int pixel_y, t_data *data)
 		i++;
 	}
 	if (i == 100)
-		my_mlx_pixel_put(data, pixel_x, pixel_y, 0x00440000);
+		my_mlx_pixel_put(data, pixel_x, pixel_y, 0x00ffffff);
 	else
-		my_mlx_pixel_put(data, pixel_x, pixel_y, i * 0x00004400);
+		my_mlx_pixel_put(data, pixel_x, pixel_y, i * 0x0001000a);
 }

@@ -1,5 +1,5 @@
 CC = cc
-	OBJ = main.c utils.c mandelbrot.c julia.c
+	OBJ = main.c render.c utils.c mandelbrot.c julia.c
 NAME = frac
 
 %.o: %.c
