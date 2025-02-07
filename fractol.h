@@ -6,7 +6,7 @@
 /*   By: eteofilo <eteofilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 22:29:55 by eteofilo          #+#    #+#             */
-/*   Updated: 2025/02/01 01:16:01 by eteofilo         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:09:41 by eteofilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # include "minilibx-linux/mlx.h"
 # include <stdlib.h>
-#include <stdio.h>
 
 typedef struct s_data
 {
@@ -32,6 +31,10 @@ typedef struct s_data
 	char	*av;
 	int		height;
 	int		width;
+	float	zoom;
+	float	size;
+	float	p_x;
+	float	p_y;
 }	t_data;
 
 typedef struct s_complex
@@ -41,11 +44,12 @@ typedef struct s_complex
 }	t_complex;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	is_in_circle(t_data *data);
+void	is_in_circle(t_data *data, float mov_x, float mov_y);
 int		close_window(t_data *data);
-int		scroll_up(int mouse_code, t_data *data);
+int		scroll_up(int mousecode, int x, int y, t_data *data);
+int		movement(int keycode, t_data *data);
 
-void	mandelbrot(int pixel_x, int pixel_y, t_data data);
+void	mandelbrot(int pixel_x, int pixel_y, t_data *data);
 void	julia(int pixel_x, int pixel_y, t_data data);
 
 #endif

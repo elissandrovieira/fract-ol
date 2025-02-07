@@ -6,7 +6,7 @@
 /*   By: eteofilo <eteofilo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 22:03:29 by eteofilo          #+#    #+#             */
-/*   Updated: 2025/02/01 10:04:33 by eteofilo         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:01:24 by eteofilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,15 @@ int	main(int ac, char **av)
 	data.av = av[1];
 	data.height = HEIGHT;
 	data.width = WIDTH;
+	data.p_x = -2;
+	data.p_y = 1.5;
+	data.zoom = 0;
+	data.size = 0;
 
-	printf("H = %i, W = %i\n", data.height, data.width);
-	is_in_circle(&data);
+	is_in_circle(&data, 0, 0);
 	mlx_put_image_to_window(data.mlx, data.win, data.data, 0, 0);
 	mlx_mouse_hook(data.win, scroll_up, &data);
+	mlx_key_hook(data.win, movement, &data);
 	mlx_hook(data.win, 17, 0, close_window, &data);
 	mlx_loop(data.mlx);
 	return (0);
